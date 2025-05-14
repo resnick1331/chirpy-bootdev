@@ -9,6 +9,11 @@ func main() {
 	// Create a new http.ServeMux
 	mux := http.NewServeMux()
 
+	//crete a file server
+	fs := http.FileServer(http.Dir("."))
+
+	//handle request to root path
+	mux.Handle("/", fs)
 
 	//create a new http.Server struct
 	server := &http.Server{
